@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 class APIService {
-    
+        
     func fetchTokenData() -> AnyPublisher<TokenModel, Error> {
-        guard let url = URL(string: "\(Constants.baseURL)/token") else {
+        guard let url = URL(string: "\(Constants.baseURL)/\(EndpointType.token.endpoint)") else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         
@@ -23,7 +23,7 @@ class APIService {
     }
     
     func fetchUsersData() -> AnyPublisher<UsersModel, Error> {
-        guard let url = URL(string: "\(Constants.baseURL)/users") else {
+        guard let url = URL(string: "\(Constants.baseURL)/\(EndpointType.users.endpoint)") else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         

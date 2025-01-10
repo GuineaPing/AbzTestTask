@@ -29,7 +29,7 @@ class UsersViewModel: ObservableObject {
                 self?.isLoading = false
                 switch completion {
                 case .failure(let error):
-                    self?.error = ">> failed to fetch users: \(error.localizedDescription)"
+                    self?.error = "failed to fetch users: \(error.localizedDescription)"
                 case .finished:
                     break
                 }

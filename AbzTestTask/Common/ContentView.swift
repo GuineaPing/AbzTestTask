@@ -8,55 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var tokenViewModel = TokenViewModel()
-    @StateObject private var usersViewModel = UsersViewModel()
+    @State private var tabSection = 0
+    @State private var errorConnection = false
     
     var body: some View {
-        VStack {
-            
-            Text("abz.test.task")
-                .font(.heading1)
-            Divider()
-            token
-            Divider()
-            users
-            
-        }
-        .padding()
-        .onAppear {
-            tokenViewModel.fetchTokenData()
-            usersViewModel.fetchUserData()
-        }
-    }
-    
-    var token: some View {
-        VStack {
-            if tokenViewModel.isLoading {
-                ProgressView()
-            } else if let error = tokenViewModel.error {
-                Text(error)
-                    .foregroundStyle(.appRed)
-                    .font(.headline)
-            } else {
-                Text("status: online")
-                    .font(.body2)
+        if tabSection == 0 {
+            UsersView(showError: $errorConnection)
+                .fullScreenCover(isPresented: $errorConnection) {
+                    StatusView(show: $errorConnection, status: .connection)
             }
+        } else {
+            SignupView()
         }
-    }
-    
-    var users: some View {
-        VStack {
-            if usersViewModel.isLoading {
-                ProgressView()
-            } else if let error = usersViewModel.error {
-                Text(error)
-                    .foregroundStyle(.appRed)
-                    .font(.headline)
-            } else {
-                Text("users: \(usersViewModel.users.count)")
-                    .font(.body2)
-            }
-        }
+        TabBar(selectedTab: $tabSection)
     }
     
 }

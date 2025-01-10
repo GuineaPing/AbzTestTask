@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Codable {
+struct UserModel: Codable, Hashable {
     let id: Int
     let name, email, phone, position: String
     let positionID, registrationTimestamp: Int

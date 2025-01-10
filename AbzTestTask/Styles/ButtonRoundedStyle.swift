@@ -13,7 +13,7 @@ struct ButtonRoundedStyle: ButtonStyle {
         configuration.label
             .font(.body1)
             .foregroundStyle(disabled ? .appPrimaryTextDisabled : .appPrimaryText)
-            .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+            .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
             .background(
                 disabled ? Color.appButtonDisabled :
                     configuration.isPressed ? Color.appButtonPressed : Color.appPrimary)

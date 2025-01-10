@@ -29,7 +29,7 @@ class TokenViewModel: ObservableObject {
                 self?.isLoading = false
                 switch completion {
                 case .failure(let error):
-                    self?.error = ">> failed to fetch token: \(error.localizedDescription)"
+                    self?.error = "failed to fetch token: \(error.localizedDescription)"
                 case .finished:
                     break
                 }
