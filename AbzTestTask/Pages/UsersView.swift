@@ -15,22 +15,33 @@ struct UsersView: View {
     var body: some View {
         VStack {
             PageHeader(title: "Working with GET request", tapped: $refresh).onChange(of: refresh) {
-//                print(">> refresh forced")
-                usersData.fetchUserData()
+                // clear users list om header tap
+                // refresh api request on pull users list down
+                if usersData.users.isEmpty {
+                    usersData.fetchUserData()
+                } else {
+                    usersData.users = []
+                }
             }
             ZStack {
-                if usersData.isLoading {
-                    ProgressView().scaleEffect(3)
-                }
+                fetchWait
                 users
             }
         }.onAppear {
-//            print(">> refresh on appear")
             usersData.fetchUserData()
         }.onChange(of: $showError.wrappedValue) {
             if !$showError.wrappedValue {
-//                print(">> refresh on close error")
                 usersData.fetchUserData()
+            }
+        }
+    }
+    
+    var fetchWait: some View {
+        VStack {
+            if usersData.isLoading {
+                ProgressView().scaleEffect(3)
+            } else {
+                EmptyView()
             }
         }
     }
@@ -79,6 +90,10 @@ struct UsersView: View {
             }
             Spacer()
         }
+        .refreshable {
+            usersData.fetchUserData()
+        }
+        .padding(.top, 20)
     }
 }
 

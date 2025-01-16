@@ -9,20 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var tabSection = 0
-    @State private var errorConnection = false
+    @State private var errorMessage = false
+    @State private var status: StatusType = .undefined
     
     var body: some View {
         if tabSection == 0 {
-            UsersView(showError: $errorConnection)
-                .fullScreenCover(isPresented: $errorConnection) {
-                    StatusView(show: $errorConnection, status: .connection)
-            }
+            UsersView(showError: $errorMessage)
+                .fullScreenCover(isPresented: $errorMessage) {
+                    StatusView(show: $errorMessage, status: .connection)
+                }
         } else {
-            SignupView()
+            SignupView(showError: $errorMessage, status: $status)
+                .onChange(of: status) {
+                    print(">> Status: \(status)")
+                }
+                .fullScreenCover(isPresented: $errorMessage) {
+                    StatusView(show: $errorMessage, status: status)
+                }
         }
         TabBar(selectedTab: $tabSection)
     }
-    
 }
 
 #Preview {

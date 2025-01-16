@@ -19,7 +19,7 @@ struct EditText: View {
                 TextField(placeholder, text: $text)
                     .font(.heading1)
                     .foregroundColor(.appPrimaryTextDisabled)
-                    .padding()
+                    .padding(20)
             }
             .overlay(
                 RoundedRectangle(cornerRadius: 4)
@@ -28,16 +28,16 @@ struct EditText: View {
             VStack(alignment: .leading) {
                 if isWarning {
                     Text("warning")
+                        .font(.body1)
                         .foregroundStyle(.appRed)
                 } else {
                     Text(comment)
+                        .font(.body1)
                         .foregroundStyle(.appPrimaryTextBar)
                 }
             }
             .padding(.leading, 16)
-            .font(.body1)
         }
-
     }
 }
 

@@ -23,9 +23,11 @@ struct StatusView: View {
                 .padding(.bottom, 25)
             Text(status.title).font(.heading1)
                 .padding(.bottom, 25)
-            ButtonRound(tap: $tapped, title: status.actionTitle).onChange(of: tapped) {
-                show = false
-            }
+            ButtonRound(
+                title: status.actionTitle,
+                tap: $tapped,
+                disabled: Binding.constant(false))
+                    .onChange(of: tapped) { show = false }
             Spacer()
         }
         

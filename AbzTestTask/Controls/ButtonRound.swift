@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ButtonRound: View {
-    
-    @Binding var tap: Bool
     @State var title: String = ""
-    @State var disabled: Bool = false
+    @Binding var tap: Bool
+    @Binding var disabled: Bool
     
     var body: some View {
         Button {
@@ -19,16 +18,18 @@ struct ButtonRound: View {
         } label: {
             Text(title)
         }
-        .buttonStyle(ButtonRoundedStyle(disabled: disabled))
+        .buttonStyle(ButtonRoundedStyle(disabled: $disabled))
         .disabled(disabled)
     }
 }
 
 #Preview {
     @Previewable @State var tap: Bool = false
-    ButtonRound(tap: $tap,
-                title: "Normal",
-                disabled: true).onChange(of: tap, {
+    @Previewable @State var disabled: Bool = true
+    ButtonRound(
+        title: "Normal",
+        tap: $tap,
+        disabled: $disabled).onChange(of: tap, {
         print(">> fiered")
     })
 }

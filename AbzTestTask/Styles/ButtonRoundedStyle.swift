@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ButtonRoundedStyle: ButtonStyle {
-    @State var disabled: Bool = false
+    @Binding var disabled: Bool
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.body1)

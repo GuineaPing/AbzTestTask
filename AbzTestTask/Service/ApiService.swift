@@ -33,4 +33,16 @@ class APIService {
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }
+    
+    func fetchPositionsData() -> AnyPublisher<PositionsModel, Error> {
+        guard let url = URL(string: "\(Constants.baseURL)/\(EndpointType.positions.endpoint)") else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: PositionsModel.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
 }
