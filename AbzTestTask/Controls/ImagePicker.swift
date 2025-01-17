@@ -8,6 +8,8 @@
 import SwiftUI
 import UIKit
 
+// Image camera/gallery picker call
+
 struct ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType
     @Binding var image: UIImage?

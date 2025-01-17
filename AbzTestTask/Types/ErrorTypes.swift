@@ -5,6 +5,8 @@
 //  Created by Eugene Lysenko on 13.01.2025.
 //
 
+// Errors that provides POST user API
+
 enum APIError: Error {
     case unprocessableEntity([String])
 }
@@ -13,29 +15,18 @@ struct ErrorResponse: Codable {
     let errors: [String: [String]]
 }
 
+// general error message
 struct UsersError: Codable {
     let success: Bool
     let message: String
 }
 
 // MARK: - UsersError422
+// validation error message
 struct UsersError422: Codable {
     let success: Bool
     let message: String
     let fails: [String: [String]]?
-    
-    /*
-     i.e
-     {
-         "success": false,
-         "message": "Validation failed",
-         "fails": {
-             "phone": [
-                 "The phone format is invalid."
-             ]
-         }
-     }
-     */
     
     var failsList: [String] {
         var result: [String] = [message]

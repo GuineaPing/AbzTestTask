@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// user position select cell
+// taken stantart from SF symbols
+
 struct PositionCell: View {
     var selectedPositionId: Int
     @State var position: PositionModel

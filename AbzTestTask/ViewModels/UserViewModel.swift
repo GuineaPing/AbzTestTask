@@ -12,7 +12,7 @@ import UIKit
 class UserViewModel: ObservableObject {
     @Published private var userData: UserModel?
     @Published var errorMessage: String?
-    @Published var isShowingImagePicker = false
+    // result status
     @Published var status: StatusType = .undefined
     
     private var cancellables = Set<AnyCancellable>()
@@ -25,6 +25,7 @@ class UserViewModel: ObservableObject {
         status = .undefined
         errorMessage = nil
         
+        // POST request builder
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
@@ -37,6 +38,7 @@ class UserViewModel: ObservableObject {
         // Multipart form data
         var body = Data()
         
+        // append data
         func appendFormData(_ data: Data, withName name: String, fileName: String? = nil, mimeType: String? = nil) {
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
             body.append("Content-Disposition: form-data; name=\"\(name)\"".data(using: .utf8)!)
@@ -77,6 +79,7 @@ class UserViewModel: ObservableObject {
     
         request.httpBody = body
         
+        // errors handler
         URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse else {
@@ -119,6 +122,7 @@ class UserViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // detect API responses
     func statusUpdate() {
         if errorMessage == nil {
             return

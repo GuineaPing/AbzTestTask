@@ -8,8 +8,11 @@
 import Foundation
 import Combine
 
+// API calls
+
 class APIService {
-        
+    
+    // token
     func fetchTokenData() -> AnyPublisher<TokenModel, Error> {
         guard let url = URL(string: "\(Constants.baseURL)/\(EndpointType.token.endpoint)") else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
@@ -22,6 +25,7 @@ class APIService {
             .eraseToAnyPublisher()
     }
     
+    // users list
     func fetchUsersData() -> AnyPublisher<UsersModel, Error> {
         guard let url = URL(string: "\(Constants.baseURL)/\(EndpointType.users.endpoint)") else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
@@ -34,6 +38,7 @@ class APIService {
             .eraseToAnyPublisher()
     }
     
+    // positions list
     func fetchPositionsData() -> AnyPublisher<PositionsModel, Error> {
         guard let url = URL(string: "\(Constants.baseURL)/\(EndpointType.positions.endpoint)") else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()

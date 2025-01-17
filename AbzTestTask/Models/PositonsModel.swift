@@ -7,6 +7,8 @@
 
 import Foundation
 
+// user position data
+
 // MARK: - PositionsModel
 struct PositionsModel: Codable {
     let success: Bool

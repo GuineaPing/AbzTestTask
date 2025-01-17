@@ -5,6 +5,8 @@
 //  Created by Eugene Lysenko on 09.01.2025.
 //
 
+// Status pages types
+
 enum StatusType: Int {
     case undefined = 0
     case connection = 1

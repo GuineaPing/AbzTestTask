@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+// user positions ViewModel
+
 class PositionsViewModel: ObservableObject {
     @Published var positions = [PositionModel]()
     @Published var isLoading: Bool = false
@@ -24,6 +26,7 @@ class PositionsViewModel: ObservableObject {
         isLoading = true
         error = nil
         
+        // GET call positiones
         apiService.fetchPositionsData()
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false

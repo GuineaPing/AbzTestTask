@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StatusView: View {
     @Binding var show: Bool
+    // status pages configuration /Type/StatusType.swift
     @State var status: StatusType = .connection
     @State private var tapped: Bool = false
 

@@ -7,6 +7,10 @@
 
 import Foundation
 
+// result of POST users call,
+// the same as UserModel but without id,
+// up the moment returns empty
+
 struct NewUserModel: Codable, Hashable {
     
     var name: String?

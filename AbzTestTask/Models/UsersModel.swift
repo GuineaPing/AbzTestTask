@@ -7,6 +7,8 @@
 
 import Foundation
 
+// users list
+
 // MARK: - UsersModel
 struct UsersModel: Codable {
     let success: Bool

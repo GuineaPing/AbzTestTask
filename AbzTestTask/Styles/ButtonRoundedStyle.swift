@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Button for Signup and Status page confirmations
 struct ButtonRoundedStyle: ButtonStyle {
     @Binding var disabled: Bool
     func makeBody(configuration: Configuration) -> some View {

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// User List cell
+
 struct UserCell: View {
     @State var user: UserModel
     

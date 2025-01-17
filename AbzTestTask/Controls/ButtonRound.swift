@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+// custom button for Signup View or Status View
+
 struct ButtonRound: View {
     @State var title: String = ""
+    // binded variable for firing button tap event
     @Binding var tap: Bool
     @Binding var disabled: Bool
     

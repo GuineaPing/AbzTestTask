@@ -5,6 +5,8 @@
 //  Created by Eugene Lysenko on 09.01.2025.
 //
 
+// API endpoints
+
 enum EndpointType: Int {
     case error = 0
     case token = 1

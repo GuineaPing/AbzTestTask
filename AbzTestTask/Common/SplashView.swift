@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// launch screen
 struct SplashView: View {
     var body: some View {
         ZStack {
@@ -16,7 +17,6 @@ struct SplashView: View {
                     .resizable()
                     .scaledToFit()
                     .padding(100)
-                
             }
         }
         .ignoresSafeArea()

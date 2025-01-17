@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// Header Title
+// tap event can be conumed developer for debug purposes
+
 struct PageHeader: View {
     @State var title: String = "..."
     @Binding var tapped: Bool

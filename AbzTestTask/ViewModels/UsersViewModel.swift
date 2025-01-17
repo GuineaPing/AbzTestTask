@@ -23,7 +23,7 @@ class UsersViewModel: ObservableObject {
     func fetchUserData() {
         isLoading = true
         error = nil
-        
+        // GET call users list
         apiService.fetchUsersData()
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false

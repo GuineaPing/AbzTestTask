@@ -7,6 +7,8 @@
 
 import Foundation
 
+// token data
+
 // MARK: - TokenModel
 struct TokenModel: Codable {
     let success: Bool

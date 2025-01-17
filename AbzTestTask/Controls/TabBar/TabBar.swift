@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// used custom TabBar because TabView not povides
+// horizontal aligned Image and text
+
 struct TabBar: View {
     @Binding var selectedTab: Int
     var body: some View {

@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+// token ViewModel
+
 class TokenViewModel: ObservableObject {
     @Published var token: String = ""
     @Published var isLoading: Bool = false
@@ -23,7 +25,7 @@ class TokenViewModel: ObservableObject {
     func fetchTokenData() {
         isLoading = true
         error = nil
-        
+        // GET call token
         apiService.fetchTokenData()
             .sink(receiveCompletion: { [weak self] completion in
                 self?.isLoading = false

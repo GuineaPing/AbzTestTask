@@ -7,6 +7,8 @@
 
 import Foundation
 
+// user from users list
+
 struct UserModel: Codable, Hashable {
     
     var id: Int
@@ -41,7 +43,7 @@ struct UserModel: Codable, Hashable {
         self.photo = ""
     }
 
-    // test data init
+    // to fill up test data only init
     internal init(id: Int) {
         self.id = id
         self.name = "Ada Lovelace"
@@ -73,10 +75,9 @@ struct UserModel: Codable, Hashable {
         return result
     }
     
-    // MARK: validation
+    // MARK: validation section
     
     var isNameValid: Bool {
-//        return !name.isEmpty
         let fullNameRegex = Constants.nameMask
         let fullNameTest = NSPredicate(format:"SELF MATCHES %@", fullNameRegex)
         let result = fullNameTest.evaluate(with: name)
@@ -85,7 +86,6 @@ struct UserModel: Codable, Hashable {
     }
     
     var isEmailValid: Bool {
-//        return !email.isEmpty
         let emailRegEx = Constants.emaiMask
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         let result =  emailTest.evaluate(with: email)
@@ -94,7 +94,6 @@ struct UserModel: Codable, Hashable {
     }
     
     var isPhoneValid: Bool {
-//        return !phone.isEmpty
 //        "+38 (XXX) XXX - XX - XX"
         let phoneNumberRegex = Constants.phoneMask
         let phoneNumberTest = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)

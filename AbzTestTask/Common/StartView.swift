@@ -12,6 +12,7 @@ struct StartView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     
+    // launch screen & main view run
     var body: some View {
         if isActive {
             ContentView()

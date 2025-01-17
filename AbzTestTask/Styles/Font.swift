@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// custom fonts set
+
 extension Font {
     static func customFont(size: CGFloat) -> Font {
         return Font.custom("Nunito Sans", size: size)

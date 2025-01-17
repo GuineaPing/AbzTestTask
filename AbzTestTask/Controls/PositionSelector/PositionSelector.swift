@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// user position select control
+// made scrolled to avoid scrolling signup view
+// to make bottom signup button always visible
+
 struct PositionSelector: View {
     @Binding var selectedPosition: Int
     @Binding var showError: Bool
